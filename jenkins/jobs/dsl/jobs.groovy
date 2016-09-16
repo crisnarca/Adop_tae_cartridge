@@ -1,3 +1,7 @@
+folder('/Project/teamtae/Cartridge_Management/SchoolSchedule'){
+	description ('Parent Folder')
+}
+
 def ProjectFolderName= "Project/teamtae/Cartridge_Management/SchoolSchedule"
 
 def generateBuildPipelineView = buildPipelineView(ProjectFolderName + "/Java_Build_Pipeline_View")
@@ -8,9 +12,7 @@ def generateSeleniumJob = freeStyleJob(ProjectFolderName + "/Selenium_Java_Proje
 //def generateDeployJob = freeStyleJob(ProjectFolderName + "/Deploy_Java_Project")
 
 
-folder('SchoolSchedule'){
-	description ('Parent Folder')
-}
+
 
 generateBuildPipelineView.with {
 	title('Java_Build_Pipeline_View')

@@ -1,13 +1,13 @@
 
 
-//folder('/Project/teamtae/Cartridge_Management/SchoolSchedule'){
-//	description ('Parent Folder')
-//}
+folder('/Project/teamtae/Cartridge_Management/SchoolSchedule'){
+	description ('Parent Folder')
+}
 
 //def workspace = "${WORKSPACE_NAME}"
 //def projectnames = "${PROJECT_NAME}"
 //def ProjectFolderName = workspace
-def ProjectFolderName = "${WORKSPACE_NAME}"
+def ProjectFolderName = '/Project/teamtae/Cartridge_Management/SchoolSchedule'
 
 def generateBuildPipelineView = buildPipelineView(ProjectFolderName + "/Java_Build_Pipeline_View")
 def generateBuildJob = freeStyleJob(ProjectFolderName + "/Build_Java_Project")

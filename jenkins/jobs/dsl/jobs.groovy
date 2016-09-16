@@ -1,4 +1,4 @@
-def ProjectFolderName= "/SchoolSchedule"
+def ProjectFolderName= "Project/teamtae/Cartridge_Management/SchoolSchedule"
 
 def generateBuildPipelineView = buildPipelineView(ProjectFolderName + "/Java_Build_Pipeline_View")
 def generateBuildJob = freeStyleJob(ProjectFolderName + "/Build_Java_Project")

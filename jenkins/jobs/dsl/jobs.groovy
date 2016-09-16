@@ -8,7 +8,7 @@ def generateBuildPipelineView = buildPipelineView(ProjectFolderName + "/Java_Bui
 def generateBuildJob = freeStyleJob(ProjectFolderName + "/Build_Java_Project")
 def generateSonarJob = freeStyleJob(ProjectFolderName + "/Sonar_Java_Project")
 def generateDeployJob = freeStyleJob(ProjectFolderName + "/Deploy_Java_Project")
-def generateSeleniumJob = freeStyleJob(ProjectFolderName + "/Selenium_Java_Project")
+def generateSeleniumJob = mavenJob(ProjectFolderName + "/Selenium_Java_Project")
 //def generateDeployJob = freeStyleJob(ProjectFolderName + "/Deploy_Java_Project")
 
 
@@ -199,44 +199,23 @@ generateDeployJob.with{
 
 generateSeleniumJob.with{
 
-  	scm {
-		git {
-			remote {
-				url("git@gitlab:${WORKSPACE_NAME}/selenium.git")
-              	credentials("adop-jenkins-master")
-					}
-			branch('*/master')
-			}
-      
-		}
-   	wrappers {
-        preBuildCleanup()
-    }
+     scm { 
+                git { 
+                        remote { 
+                                url("git@gitlab:${WORKSPACE_NAME}/selenium.git") 
+                                credentials('adop-jenkins-master') 
+                        } 
+                        branch('*/master') 
+                } 
+        } 
+        parameters { 
+                stringParam('CUSTOM_WORKSPACE', null, null) 
+        } 
+        triggers { 
+                snapshotDependencies(true) 
+        } 
+        rootPOM('WebTest/pom.xml') 
+        goals('clean test') 
   
-    triggers {
-      
-        gitlabPush {
-            buildOnMergeRequestEvents(true)
-            buildOnPushEvents(true)
-            enableCiSkip(true)
-            setBuildDescription(true)
-            addNoteOnMergeRequest(true)
-            rebuildOpenMergeRequest('never')
-            addVoteOnMergeRequest(false)
-            useCiFeatures(false)
-            acceptMergeRequestOnSuccess()
-        }
-    }
-  
-	steps {
-		maven {
-			mavenInstallation('ADOP Maven')
-			goals('''
-				clean
-				package
-				''')
-            rootPOM('WebTest/pom.xml')
-			}
-			}
-  
-			}
+	}
+				

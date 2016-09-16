@@ -38,7 +38,7 @@ generateBuildJob.with {
 	scm {
 		git {
 			remote {
-				url("git@gitlab:teamtae/SchoolSchedule.git")
+				url("git@gitlab:${WORKSPACE_NAME}/SchoolSchedule.git")
               	credentials("adop-jenkins-master")
 					}
 			branch('*/master')
@@ -135,7 +135,7 @@ generateDeployJob.with{
    multiscm {
         git {
             remote {
-                url('git@gitlab:teamtae/ansible-playbook.git')
+                url('git@gitlab:${WORKSPACE_NAME}/ansible-playbook.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
@@ -145,7 +145,7 @@ generateDeployJob.with{
         }
         git {
             remote {
-                url('git@gitlab:teamtae/dockerfile_repo.git')
+                url('git@gitlab:${WORKSPACE_NAME}/dockerfile_repo.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
@@ -155,7 +155,7 @@ generateDeployJob.with{
         }
         git {
             remote {
-                url('git@gitlab:teamtae/Pemfile.git')
+                url('git@gitlab:${WORKSPACE_NAME}/Pemfile.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
@@ -202,7 +202,7 @@ generateSeleniumJob.with{
   	scm {
 		git {
 			remote {
-				url("git@gitlab:teamtae/selenium.git")
+				url("git@gitlab:${WORKSPACE_NAME}/selenium.git")
               	credentials("adop-jenkins-master")
 					}
 			branch('*/master')

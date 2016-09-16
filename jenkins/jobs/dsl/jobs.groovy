@@ -208,9 +208,7 @@ generateSeleniumJob.with{
                         branch('*/master') 
                 } 
         } 
-        parameters { 
-                stringParam('CUSTOM_WORKSPACE', null, null) 
-        } 
+
         triggers { 
                 snapshotDependencies(true) 
         } 

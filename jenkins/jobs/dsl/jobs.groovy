@@ -135,7 +135,7 @@ generateDeployJob.with{
    multiscm {
         git {
             remote {
-                url('git@gitlab:${WORKSPACE_NAME}/ansible-playbook.git')
+                url('git@gitlab:Project/ansible-playbook.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
@@ -145,7 +145,7 @@ generateDeployJob.with{
         }
         git {
             remote {
-                url('git@gitlab:${WORKSPACE_NAME}/dockerfile_repo.git')
+                url('git@gitlab:Project/dockerfile_repo.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
@@ -155,7 +155,7 @@ generateDeployJob.with{
         }
         git {
             remote {
-                url('git@gitlab:${WORKSPACE_NAME}/Pemfile.git')
+                url('git@gitlab:Project/Pemfile.git')
               	credentials("adop-jenkins-master")
             }
             extensions {
